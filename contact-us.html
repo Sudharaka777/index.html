@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us - Auto-Mart Car Rental</title>
+    <!-- Include Bootstrap 5 CSS and JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Include Flatpickr CSS and JavaScript -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+
+    <style>
+        /* Add your custom CSS styles here */
+        /* Default light mode styles */
+        body {
+            background: url('image1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333; /* Dark text */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Colorful navigation bar styles */
+        .navbar {
+            background-color: #17a2b8; /* Light blue background color */
+        }
+
+        .navbar-brand {
+            color: #fff; /* White text color for the brand */
+            font-family: 'Pacifico', cursive;
+            font-size: 24px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #fff; /* White color for the hamburger icon */
+        }
+
+        .nav-link {
+            color: #fff !important; /* White text color for links */
+        }
+
+        .nav-link:hover {
+            color: #ffcd00 !important; /* Yellow text color on hover */
+        }
+
+        /* Container styles */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form styles */
+        #contact-form {
+            margin-top: 20px;
+        }
+
+        /* Clock styles */
+        .clock {
+            text-align: right;
+            margin: 10px;
+            font-size: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Clock -->
+    <div class="clock">
+        <span id="clock-time"></span>
+    </div>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Auto-Mart Rent a Car</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="untitled.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Us Form -->
+    <section id="contact" class="container mt-4">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+            </div>
+            <div class="mb-3">
+                <label for="pickupLocation" class="form-label">Pickup Location</label>
+                <input type="text" class="form-control" id="pickupLocation" name="pickupLocation" placeholder="Pickup Location">
+            </div>
+            <div class="mb-3">
+                <label for="pickupTime" class="form-label">Pickup Time</label>
+                <input type="time" class="form-control" id="pickupTime" name="pickupTime">
+            </div>
+            <div class="mb-3">
+                <label for="vehicleType" class="form-label">Vehicle Type</label>
+                <select class="form-select" id="vehicleType" name="vehicleType">
+                    <option value="SUV">SUV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="SemiTrucks">Semi Trucks</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="driveType" class="form-label">Drive Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="driveType" id="selfDrive" value="self-drive">
+                    <label class="form-check-label" for="selfDrive">Self-Drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="driveType" id="withDriver" value="with-driver">
+                    <label class="form-check-label" for="withDriver">With Driver</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number (10 digits)</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Your Phone Number" oninput="validatePhoneNumber(this)">
+                <small id="phone-error" style="color: red;"></small>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="text" class="form-control" id="date" name="date" placeholder="Select a date" data-input>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+        </form>
+    </section>
+
+    <!-- JavaScript to handle form submission -->
+    <script>
+        function submitForm() {
+            // You can add form validation and submission logic here
+
+            // Simulating a successful form submission
+            alert("Form submitted successfully!");
+            document.getElementById("contact-form").reset();
+        }
+    </script>
+
+    <!-- Initialize Flatpickr for the date input -->
+    <script>
+        flatpickr("#date", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+        });
+    </script>
+
+    <!-- JavaScript for the digital clock -->
+    <script>
+        function updateClock() {
+            const time = document.querySelector('#clock-time');
+            const now = new Date();
+            const options = {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: true,
+            };
+            const formattedTime = now.toLocaleTimeString('en-US', options);
+            time.textContent = formattedTime;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+    <script>
+        function validatePhoneNumber(input) {
+            const phoneNumber = input.value;
+            const pattern = /^[0-9]*$/;
+
+            if (!pattern.test(phoneNumber)) {
+                document.getElementById("phone-error").textContent = "Please enter digits only.";
+            } else if (phoneNumber.length !== 10) {
+                document.getElementById("phone-error").textContent = "Please enter exactly 10 digits.";
+            } else {
+                document.getElementById("phone-error").textContent = "";
+            }
+        }
+    </script>
+</body>
+</html>
