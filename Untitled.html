@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auto-Mart Car Detailing</title>
+    <!-- Include Bootstrap 5 CSS and JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Add your custom CSS styles here */
+        /* Style the video */
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Custom Navigation Bar Styling */
+        .navbar {
+            background-color: #343a40; /* Dark gray background color */
+        }
+
+        .navbar-brand {
+            color: #f8f9fa; /* Light gray text color */
+        }
+
+        .navbar-toggler-icon {
+            background-color: #f8f9fa; /* Light gray hamburger icon color */
+        }
+
+        .nav-link {
+            color: #f8f9fa !important; /* Light gray text color for links */
+        }
+
+        .nav-link:hover {
+            color: #17a2b8 !important; /* Light blue text color on hover */
+        }
+
+        /* Style for the map container */
+        #map {
+            height: 400px; /* Set the desired map height */
+            width: 100%; /* Full-width map */
+        }
+
+        /* Style for the calendar view */
+        #calendar-view {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        #calendar-header {
+            background-color: #17a2b8;
+            color: #fff;
+            padding: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        #calendar-content {
+            padding: 10px;
+        }
+
+        .flatpickr-calendar {
+            width: 100%;
+        }
+
+        .flatpickr-prev-month, .flatpickr-next-month {
+            background-color: #17a2b8;
+            color: #fff;
+            border: none;
+        }
+
+        .flatpickr-day {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Dark Mode styles */
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Auto-Mart Rent a Car</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="untitled.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us.html">Contact Us</a>
+                    </li>
+                </ul>
+                <button id="dark-mode-toggle" class="btn btn-secondary">🌙</button> <!-- Moon icon for Dark Mode -->
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="vid1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Content sections -->
+    <section id="home" class="container">
+        <center><h2 style="font-size: 40px; font-family: 'Pacifico', cursive;">Welcome to Auto-Mart Rent a Car</h2></center>
+        <center><p>With over 10 years of experience, we offer a range of car rental services at our branches in Colombo, Galle, Kandy, and Kurunegala.</p></center>
+    </section>
+    <br>
+
+    <!-- Location Map Section -->
+    <section id="location" class="container mt-4">
+        <h2>Our Location</h2>
+        <div class="card" style="width: 18rem;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63383.19242821576!2d79.8377459581543!3d6.8365842492419775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25a8d6ec1f8c3%3A0x47810f3e7d084753!2sDehiwala-Mount%20Lavinia!5e0!3m2!1sen!2slk!4v1697290834992!5m2!1sen!2slk" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="card-body">
+                <p class="card-text">Visit us at our convenient location in Colombo, Sri-Lanka. We are here to serve you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar View -->
+    <div id="calendar-view">
+        <div id="calendar-header">
+            <h3>Select a Date</h3>
+        </div>
+        <div id="calendar-content">
+            <input type="text" id="calendar" placeholder="Select a date">
+        </div>
+    </div>
+
+    <!-- JavaScript to display the calendar view using Flatpickr -->
+    <script>
+        // Initialize Flatpickr
+        flatpickr("#calendar", {
+            dateFormat: "Y-m-d",
+        });
+    </script>
+    <br>
+
+    <!-- JavaScript to toggle between Dark Mode and Light Mode -->
+    <script>
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+
+        // Check for user's preference and set the mode accordingly
+        if (localStorage.getItem("darkMode") === "enabled") {
+            enableDarkMode();
+        }
+
+        darkModeToggle.addEventListener("click", () => {
+            if (localStorage.getItem("darkMode") !== "enabled") {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+        });
+
+        function enableDarkMode() {
+            body.classList.add("dark-mode");
+            localStorage.setItem("darkMode", "enabled");
+        }
+
+        function disableDarkMode() {
+            body.classList.remove("dark-mode");
+            localStorage.setItem("darkMode", null);
+        }
+    </script>
+
+    <footer class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>About Us</h3>
+                <p>We are Auto-Mart Rent a Car, your reliable partner for all your car rental needs. With a passion for cars and a commitment to exceptional service, we have been serving our customers for over a decade. Our mission is to provide top-quality rental vehicles and make your journey comfortable and memorable.</p>
+            </div>
+            <div class="col-md-6">
+                <h3>Contact Information</h3>
+                <address>
+                    <strong>Auto-Mart Rent a Car</strong><br>
+                    Colombo, Sri-Lanka<br>
+                    Phone: +1 (123) 456-7890<br>
+                    Email: info@automartrentacar.com
+                </address>
+            </div>
+        </div>
+        <p class="text-center mt-5">Auto-Mart@2023 All Rights Reserved</p>
+    </footer>
+
+    <!-- Include Bootstrap and any other necessary JavaScript libraries -->
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Special Offers</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* CSS to style the Special Offers section as a banner */
+        #special-offers {
+            text-align: center;
+            padding: 20px; /* Add padding for spacing */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto; /* Center the table */
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #3498db; /* Add a border with your preferred color */
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db; /* Header background color */
+            color: #fff; /* Header text color */
+            font-weight: bold;
+        }
+
+        .offer-title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <marquee behavior="alternate" direction="right" onmouseover="this.stop();" onmouseout="this.start();"><h1>Welcome to Our Website</h1></marquee>
+    </header>
+
+    <!-- Special Offers Section (Table View) -->
+    <section id="special-offers">
+        <h2>Special Offers</h2>
+        <table>
+            <tr>
+                <th>Offer</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td class="offer-title">Summer Special</td>
+                <td>Get 10% off your rental when you book for a week or more this summer.</td>
+            </tr>
+            <tr>
+                <td class="offer-title">Family Vacation Deal</td>
+                <td>Family-sized SUVs at discounted rates for your next vacation.</td>
+            </tr>
+            <!-- Add more offers here -->
+            <tr>
+                <td class="offer-title">Autumn Getaway</td>
+                <td>Enjoy the fall season with our special autumn vacation package.</td>
+            </tr>
+            <tr>
+                <td class="offer-title">Weekend Escape</td>
+                <td>Plan a quick weekend escape with our exclusive weekend rates.</td>
+            </tr>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Auto-Mart. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
